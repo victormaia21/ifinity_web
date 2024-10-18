@@ -159,7 +159,7 @@ export default function Main() {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((product) => (
+                        {products.length > 0 && products.map((product) => (
                             <tr key={product.id} className="border-[#f0f0f0] border-solid border-t-[7px] text-center h-[2em]">
                                 <td className="bg-white flex items-center">
                                     <img src={"/" + product.imagem} alt={product.nome} className="w-12 h-12"/>

@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { products } from '@/public/files/json/products.json';
+import products from '@/public/fakes/products';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Image from "next/image";
 

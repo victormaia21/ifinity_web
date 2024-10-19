@@ -83,35 +83,21 @@ const AppBar = styled(MuiAppBar, {
   
   
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme }) => ({
-    width: drawerWidth,
-    flexShrink: 0,
-    zIndex: theme.zIndex.appBar + 1,
-    whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
-    '& .MuiDrawer-paper': {
-      backgroundColor: '#2a3f54',
-      ...(!open ? closedMixin(theme) : openedMixin(theme)),
-    },
-    variants: [
-      {
-        props: ({ open }) => open,
-        style: {
-          ...openedMixin(theme),
-          '& .MuiDrawer-paper': openedMixin(theme),
-        },
-      },
-      {
-        props: ({ open }) => !open,
-        style: {
-          ...closedMixin(theme),
-          '& .MuiDrawer-paper': closedMixin(theme),
-        },
-      },
-    ],
-  }),
-);
+  const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+    ({ theme, open }) => ({
+      width: open ? drawerWidth : `calc(${theme.spacing(7)} + 1px)`, // Adicionando a lógica baseada em "open"
+      flexShrink: 0,
+      whiteSpace: 'nowrap',
+      boxSizing: 'border-box',
+      ...(open && {
+        '& .MuiDrawer-paper': openedMixin(theme),
+      }),
+      ...(!open && {
+        '& .MuiDrawer-paper': closedMixin(theme),
+      }),
+    })
+  );
+  
 
 export default function MiniDrawer() {
   const theme = useTheme();
@@ -253,7 +239,17 @@ export default function MiniDrawer() {
         </Toolbar>
         
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        anchor="left"
+        open={open}
+        PaperProps={{
+          sx: {
+            backgroundColor: '#2a3f54', // Define a cor de fundo
+            color: '#fff', // Define a cor do texto
+          },
+        }}
+      >
         <DrawerHeader sx={{ background: '#2a3f54' }}>
         
           {open && <IconButton onClick={handleDrawerClose} sx={{ background: '#fff', borderRadius: '30px', ":hover": { background: '#fff' } }}>

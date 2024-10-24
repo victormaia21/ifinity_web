@@ -133,7 +133,7 @@ export default function Main() {
 
         </div>
 
-        <div className="border-[1px] border-t-[#ccc] mt-7 pb-5">
+        <div className="border-[1px] border-t-[#ccc] mt-7 pb-5 overflow-x-auto">
             <div className="flex justify-center">
                 <KeyboardArrowUpIcon />
             </div>
@@ -142,8 +142,7 @@ export default function Main() {
                 <h2 className="font-bold">Top 15 produtos vendidos</h2>
             </div>
 
-            <div className="overflow-x-auto">
-                <table className="border-collapse w-full overflow-auto">
+                <table className="hidden tableResponsive:border-collapse tableResponsive:w-full tableResponsive:block">
                     <thead>
                         <tr className="text-center text-[#aaa] text-[.75em]">
                             <th className="pt-5 pb-3">PRODUTO</th>
@@ -184,7 +183,73 @@ export default function Main() {
                         ))}
                     </tbody>
                 </table>
+                <div className="tableResponsive:hidden">
+        {products.length > 0 && products.map((product) => (
+            <div className="bg-white mt-4 rounded-3xl" key={product.id}>
+            <div className="w-11/12 m-auto pt-4 pb-4">
+                <div className="border-b-[1px] border-[#aaa]">
+                <h2 className="font-bold text-center">PRODUTO</h2>
+                    <div className="flex items-center gap-3">
+                        <Image src={"/" + product.imagem} alt={product.nome} width={180} height={180}/>
+                        <p className="ml-1 pl-12 pr-12">{product.nome}</p>
+                    </div>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">PREÇO MÉDIO</h2>
+                    <p className="text-center font-[700] mt-1">R$ {product.preco_medio}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">CUSTO UNITÁRIO MEDIO</h2>
+                    <p className="text-center mt-1">R$ {product.custo_unitario_medio}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">UNIDADES VENDIDAS TOTAIS</h2>
+                    <p className="text-center mt-1">{product.unidades_vendidas_totais}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">TOTAL FATURADO</h2>
+                    <p className="text-center mt-1">{product.total_faturado}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">REPRESENT</h2>
+                    <p className="text-center mt-1">{product.represent}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">LUCRO</h2>
+                    <p className="text-center mt-1">{product.lucro}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">MARGEM</h2>
+                    <p className={`text-center mt-1 w-1/4 m-auto rounded-xl ${colorMargenAndMpa(product.margem)}`}>{product.margem}%</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">CUSTO ADS</h2>
+                    <p className="text-center mt-1">{product.custo_ads}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">LUCRO PÓS ADS</h2>
+                    <p className="text-center mt-1">{product.lucro_pos_ads}</p>
+                </div>
+
+                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                    <h2 className="font-bold text-center">MPA</h2>
+                    <p className={`text-center mt-1 w-1/4 m-auto rounded-xl ${colorMargenAndMpa(product.margem)}`}>{product.margem}%</p>
+                </div>
+
             </div>
+            </div>
+        ))}
+        </div>
+
         </div>
         <div className="pt-2 pb-12">
             <Button

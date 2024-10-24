@@ -14,6 +14,9 @@ module.exports = {
       backgroundImage: {
         'custom-pattern': 'url:("/images/cityDemo.jpg")',
       },
+      screens: {
+        'tableResponsive': '890px' 
+      }
     },
   },
   plugins: [],

@@ -27,6 +27,7 @@ export default function Main() {
             return "bg-[#fead89]"
         }
     }
+   
     
     return (
         <Box component="main" sx={{ flexGrow: 1, p: 3, paddingTop: '3.75em' }}>
@@ -142,113 +143,115 @@ export default function Main() {
                 <h2 className="font-bold">Top 15 produtos vendidos</h2>
             </div>
 
-                <table className="hidden tableResponsive:border-collapse tableResponsive:w-full tableResponsive:block">
-                    <thead>
-                        <tr className="text-center text-[#aaa] text-[.75em]">
-                            <th className="pt-5 pb-3">PRODUTO</th>
-                            <th>PREÇO MÉDIO</th>
-                            <th>CUSTO UNITÁRIO MÉDIO</th>
-                            <th>UNIDADES VENDIDAS TOTAIS</th>
-                            <th>TOTAL FATURADO</th>
-                            <th>REPRESENT</th>
-                            <th>LUCRO</th>
-                            <th>MARGEM</th>
-                            <th>CUSTO ADS</th>
-                            <th>LUCRO PÓS ADS</th>
-                            <th>MPA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products.length > 0 && products.map((product) => (
-                            <tr key={product.id} className="border-[#f0f0f0] border-solid border-t-[7px] text-center h-[2em]">
-                                <td className="bg-white flex items-center">
-                                    <Image src={"/" + product.imagem} alt={product.nome} width={60} height={60}/>
-                                    <p className="ml-1 pl-12 pr-12">{product.nome}</p>
-                                </td>
-                                <td className="bg-white mt-[1em] font-[600]">{product.preco_medio}</td>
-                                <td className="bg-white mt-[1em]">{product.custo_unitario_medio}</td>
-                                <td className="bg-white mt-[1em]">{product.unidades_vendidas_totais}</td>
-                                <td className="bg-white mt-[1em]">{product.total_faturado}</td>
-                                <td className="bg-white mt-[1em]">{product.represent}</td>
-                                <td className="bg-white mt-[1em]">{product.lucro}</td>
-                                <td className="bg-white mt-[1em]">
-                                    <span className={`${colorMargenAndMpa(product.margem)} pt-2 pb-2 pl-1 pr-1 rounded-[30px] text-white`}>
-                                        {product.margem}%
-                                    </span>
-                                </td>
-                                <td className="bg-white mt-[1em]">{product.custo_ads}</td>
-                                <td className="bg-white mt-[1em]">{product.lucro_pos_ads}</td>
-                                <td className="bg-white mt-[1em] pr-2">{product.margem}%</td>
+                <div className="w-full grid">
+                    <table className="hidden tableResponsive:border-collapse tableResponsive:block tableResponsive:w-full">
+                        <thead>
+                            <tr className="text-center text-[#aaa] text-[.75em]">
+                                <th className="pt-5 pb-3">PRODUTO</th>
+                                <th>PREÇO MÉDIO</th>
+                                <th>CUSTO UNITÁRIO MÉDIO</th>
+                                <th>UNIDADES VENDIDAS TOTAIS</th>
+                                <th>TOTAL FATURADO</th>
+                                <th>REPRESENT</th>
+                                <th>LUCRO</th>
+                                <th>MARGEM</th>
+                                <th>CUSTO ADS</th>
+                                <th>LUCRO PÓS ADS</th>
+                                <th>MPA</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {products.length > 0 && products.map((product) => (
+                                <tr key={product.id} className="border-[#f0f0f0] border-solid border-t-[7px] text-center h-[2em]">
+                                    <td className="bg-white flex items-center">
+                                        <Image src={"/" + product.imagem} alt={product.nome} width={60} height={60}/>
+                                        <p className="ml-1 pl-12 pr-12">{product.nome}</p>
+                                    </td>
+                                    <td className="bg-white mt-[1em] font-[600]">{product.preco_medio}</td>
+                                    <td className="bg-white mt-[1em]">{product.custo_unitario_medio}</td>
+                                    <td className="bg-white mt-[1em]">{product.unidades_vendidas_totais}</td>
+                                    <td className="bg-white mt-[1em]">{product.total_faturado}</td>
+                                    <td className="bg-white mt-[1em]">{product.represent}</td>
+                                    <td className="bg-white mt-[1em]">{product.lucro}</td>
+                                    <td className="bg-white mt-[1em]">
+                                        <span className={`${colorMargenAndMpa(product.margem)} pt-2 pb-2 pl-1 pr-1 rounded-[30px] text-white`}>
+                                            {product.margem}%
+                                        </span>
+                                    </td>
+                                    <td className="bg-white mt-[1em]">{product.custo_ads}</td>
+                                    <td className="bg-white mt-[1em]">{product.lucro_pos_ads}</td>
+                                    <td className="bg-white mt-[1em] pr-2">{product.margem}%</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
                 <div className="tableResponsive:hidden">
-        {products.length > 0 && products.map((product) => (
-            <div className="bg-white mt-4 rounded-3xl" key={product.id}>
-            <div className="w-11/12 m-auto pt-4 pb-4">
-                <div className="border-b-[1px] border-[#aaa]">
-                <h2 className="font-bold text-center">PRODUTO</h2>
-                    <div className="flex items-center gap-3">
-                        <Image src={"/" + product.imagem} alt={product.nome} width={180} height={180}/>
-                        <p className="ml-1 pl-12 pr-12">{product.nome}</p>
+                    {products.length > 0 && products.map((product) => (
+                        <div className="bg-white mt-4 rounded-3xl" key={product.id}>
+                        <div className="w-11/12 m-auto pt-4 pb-4">
+                            <div className="border-b-[1px] border-[#aaa]">
+                            <h2 className="font-bold text-center">PRODUTO</h2>
+                                <div className="flex items-center gap-3">
+                                    <Image src={"/" + product.imagem} alt={product.nome} width={180} height={180}/>
+                                    <p className="ml-1 pl-12 pr-12">{product.nome}</p>
+                                </div>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">PREÇO MÉDIO</h2>
+                                <p className="text-center font-[700] mt-1">R$ {product.preco_medio}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">CUSTO UNITÁRIO MEDIO</h2>
+                                <p className="text-center mt-1">R$ {product.custo_unitario_medio}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">UNIDADES VENDIDAS TOTAIS</h2>
+                                <p className="text-center mt-1">{product.unidades_vendidas_totais}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">TOTAL FATURADO</h2>
+                                <p className="text-center mt-1">{product.total_faturado}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">REPRESENT</h2>
+                                <p className="text-center mt-1">{product.represent}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">LUCRO</h2>
+                                <p className="text-center mt-1">{product.lucro}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">MARGEM</h2>
+                                <p className={`text-center mt-1 w-1/4 m-auto rounded-xl ${colorMargenAndMpa(product.margem)}`}>{product.margem}%</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">CUSTO ADS</h2>
+                                <p className="text-center mt-1">{product.custo_ads}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">LUCRO PÓS ADS</h2>
+                                <p className="text-center mt-1">{product.lucro_pos_ads}</p>
+                            </div>
+
+                            <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
+                                <h2 className="font-bold text-center">MPA</h2>
+                                <p className={`text-center mt-1 w-1/4 m-auto rounded-xl ${colorMargenAndMpa(product.margem)}`}>{product.margem}%</p>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">PREÇO MÉDIO</h2>
-                    <p className="text-center font-[700] mt-1">R$ {product.preco_medio}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">CUSTO UNITÁRIO MEDIO</h2>
-                    <p className="text-center mt-1">R$ {product.custo_unitario_medio}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">UNIDADES VENDIDAS TOTAIS</h2>
-                    <p className="text-center mt-1">{product.unidades_vendidas_totais}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">TOTAL FATURADO</h2>
-                    <p className="text-center mt-1">{product.total_faturado}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">REPRESENT</h2>
-                    <p className="text-center mt-1">{product.represent}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">LUCRO</h2>
-                    <p className="text-center mt-1">{product.lucro}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">MARGEM</h2>
-                    <p className={`text-center mt-1 w-1/4 m-auto rounded-xl ${colorMargenAndMpa(product.margem)}`}>{product.margem}%</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">CUSTO ADS</h2>
-                    <p className="text-center mt-1">{product.custo_ads}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">LUCRO PÓS ADS</h2>
-                    <p className="text-center mt-1">{product.lucro_pos_ads}</p>
-                </div>
-
-                <div className="border-b-[1px] border-[#aaa] pt-3 pb-3">
-                    <h2 className="font-bold text-center">MPA</h2>
-                    <p className={`text-center mt-1 w-1/4 m-auto rounded-xl ${colorMargenAndMpa(product.margem)}`}>{product.margem}%</p>
-                </div>
-
+                    ))}
             </div>
-            </div>
-        ))}
-        </div>
 
         </div>
         <div className="pt-2 pb-12">

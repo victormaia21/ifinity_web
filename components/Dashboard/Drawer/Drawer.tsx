@@ -239,7 +239,7 @@ export default function MiniDrawer({ hasBack }: Props) {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => router.push("/login")}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

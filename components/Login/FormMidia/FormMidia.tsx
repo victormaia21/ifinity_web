@@ -8,12 +8,49 @@ import GoogleIcon from '@mui/icons-material/Google';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { Ilogin } from '@/interfaces/interface';
+import { useRouter } from 'next/navigation';
 
 export default function FormMidia() {
+
+    const router = useRouter();
+
+    const initialCredentials: Ilogin = {
+      username: "",
+      password: "",
+    };
+
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [credentials, setCredentials] = useState<Ilogin>(initialCredentials);
+    const [messageErro, setMessageErro] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
 
     const changeTextPassowrd = () => setPasswordVisible((pass) => !pass);
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const { value, name } = event.target;
+      setCredentials((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+        setLoading(true);
+
+        if (!credentials.password || !credentials.username) {
+            return setMessageErro("Nome de usuario e senha obrigatoria");
+        }
+        if (credentials.username === "admin" && credentials.password === "admin") {
+            return router.push("/dashboard");
+        }
+
+        return setMessageErro("Usuario ou senha incorreta");
+      } catch (error) {
+        console.log(error);
+      } 
+    }
+    
     return (
         <section className='w-full sm:w-1/2'>
             <div className='w-[75%] ml-auto mr-auto pt-[5em] pb-[5em]'>
@@ -21,7 +58,7 @@ export default function FormMidia() {
                     <Image src='/images/ifiniti.png' alt='welcome ifinity' width={500} height={500}/>
                 </div>
                 <p className='text-[#aaa] text-[1.3em] text-center mt-3'>Log in to get in the moment updates on the things that interest you</p>
-                <form className='mt-[2em]'>
+                <form className='mt-[2em]' onSubmit={handleSubmit}>
                     <div className='relative'>
                         <span className='absolute left-2 top-1'>
                             <PersonOutlineIcon className='text-[2.5em] text-[#aaa]'/>
@@ -30,6 +67,9 @@ export default function FormMidia() {
                             type="text" 
                             placeholder="Username"
                             className="w-full border-[1px] border-[#aaa] text-[1.4em] pt-2 pb-2 rounded-[30px] p-14 focus: outline-none"
+                            name='username'
+                            value={credentials.username}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='relative mt-2'>
@@ -40,6 +80,9 @@ export default function FormMidia() {
                             type={passwordVisible ? 'text' : 'password'}
                             placeholder='Password'
                             className="w-full border-[1px] border-[#aaa] text-[1.4em] pt-2 pb-2 rounded-[30px] p-14 focus: outline-none"
+                            name='password'
+                            value={credentials.password}
+                            onChange={handleChange}
                         />
                         <span className='absolute right-2 mt-1 cursor-pointer' onClick={() => changeTextPassowrd()}>
                             <HelpOutlineRoundedIcon className='text-[2.5em] text-[#aaa]'/>
@@ -53,6 +96,7 @@ export default function FormMidia() {
                         >
                             SIGN IN
                         </button>
+                        {messageErro && <p className='mt-2 text-center text-[red] underline'>{messageErro}</p>}
                     </div>
                 </form>
 

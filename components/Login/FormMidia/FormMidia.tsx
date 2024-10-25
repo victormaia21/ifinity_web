@@ -24,7 +24,6 @@ export default function FormMidia() {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [credentials, setCredentials] = useState<Ilogin>(initialCredentials);
     const [messageErro, setMessageErro] = useState<string>("");
-    const [loading, setLoading] = useState<boolean>(false);
 
     const changeTextPassowrd = () => setPasswordVisible((pass) => !pass);
 
@@ -36,7 +35,6 @@ export default function FormMidia() {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
-        setLoading(true);
 
         if (!credentials.password || !credentials.username) {
             return setMessageErro("Nome de usuario e senha obrigatoria");

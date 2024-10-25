@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function ImagemCidade() {
     return (
         <div 
-            className="w-1/2 h-screen bg-no-repeat bg-cover bg-center flex items-center"
+            className="w-full h-screen bg-no-repeat bg-cover bg-center flex items-center sm:w-1/2"
             style={{
                 backgroundImage: 'linear-gradient(to top, rgba(234,53,32,0.4), rgba(228,36,36,0.4)), url("/images/cityDemo.jpg")',
             }}

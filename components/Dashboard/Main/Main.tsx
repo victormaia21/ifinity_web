@@ -32,55 +32,55 @@ export default function Main() {
     return (
         <Box component="main" sx={{ flexGrow: 1, p: 3, paddingTop: '3.75em' }}>
         <div className='bg-white pt-4'>
-        <p className='pl-2'><span>Acesso Rapido <b>DATA:</b> {getDate()}</span></p>
-        <div className='flex justify-between border-t-[1px] pt-2 pb-6 mt-3'>
-            <div className='w-full flex justify-center'>
-            <select className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'>
-                <option>Hoje</option>
-            </select>
-            </div>
-            
+            <p className='pl-2'><span>Acesso Rapido <b>DATA:</b> {getDate()}</span></p>
+            <div className='grid gap-2 border-t-[1px] pt-2 pb-6 mt-3 sm:flex sm:justify-between'>
+                <div className='w-full flex justify-center'>
+                    <select className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'>
+                        <option>Hoje</option>
+                    </select>
+                </div>
+                    
 
-            <div className='w-full flex justify-center'>
-            <select className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'>
-                <option>Todas - Empresas</option>
-            </select>
-            </div>
+                <div className='w-full flex justify-center'>
+                    <select className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'>
+                        <option>Todas - Empresas</option>
+                    </select>
+                </div>
 
-            <div className='w-full flex justify-center'>
-            <select className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'>
-                <option>Todos - Canais</option>
-            </select>
-            </div>
+                <div className='w-full flex justify-center'>
+                    <select className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'>
+                        <option>Todos - Canais</option>
+                    </select>
+                </div>
 
-            <div className='w-full flex justify-center'>
-            <input type="text" placeholder='Digite o SKU' className='w-[80%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'/>
-            <button className='bg-blue-600 text-white pl-2 pr-2 cursor-pointer'>Go!</button>
+                <div className='w-full flex justify-center relative'>
+                    <input type="text" placeholder='Digite o SKU' className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pr-12 pt-1 pb-1'/>
+                    <button className='bg-blue-600 text-white pl-2 pr-2 cursor-pointer absolute top-0 right-[2.5%] h-full'>Go!</button>
+                </div>
             </div>
-        </div>
         </div>
 
         {/* Lucros */}
         <div>
         {/* Lucros colorido */}
-            <div className='flex justify-between gap-2'>
+            <div className='flex flex-wrap gap-2 justify-center'>
 
-                <div className='bg-[#007aff] w-[80%] text-center pt-3 pb-3 text-white rounded-lg'>
+                <div className='bg-[#007aff] w-[45%] text-center pt-3 pb-3 text-white rounded-lg sm:w-[24%]'>
                     <p>Faturamento</p>
                     <h1 className='font-bold mt-1'>R$ 99.196,24</h1>
                 </div>
 
-                <div className='bg-[#29a744] w-[80%] text-center pt-3 pb-3 text-white rounded-lg'>
+                <div className='bg-[#29a744] w-[45%] text-center pt-3 pb-3 text-white rounded-lg sm:w-[24%]'>
                     <p>Liq. do Marketplace</p>
                     <h1 className='font-bold mt-1'>R$ 80.789,64</h1>
                 </div>
 
-                <div className='bg-[#6c757e] w-[80%] text-center pt-3 pb-3 text-white rounded-lg'>
+                <div className='bg-[#6c757e] w-[45%] text-center pt-3 pb-3 text-white rounded-lg sm:w-[24%]'>
                     <p>Lucro Bruto</p>
                     <h1 className='font-bold mt-1'>R$ 7.268,93</h1>
                 </div>
 
-                <div className='bg-[#353a40] w-[80%] text-center pt-3 pb-3 text-white rounded-lg'>
+                <div className='bg-[#353a40] w-[45%] text-center pt-3 pb-3 text-white rounded-lg sm:w-[24%]'>
                     <p>Margem</p>
                     <h1 className='font-bold mt-1'>7,33%</h1>
                 </div>
@@ -88,7 +88,7 @@ export default function Main() {
 
 
         {/* Lucros em branco */}
-        <div className='grid grid-cols-container_values gap-2 mt-6 border-[#ccc] border-t-[1px] pt-6'>
+        <div className='grid sm:grid-cols-container_values gap-2 mt-6 border-[#ccc] border-t-[1px] pt-6 cardsResponsive:grid-cols-1'>
             <div className='bg-white text-center pt-3 pb-3 text-black border-[#ddd] border-[1px] border-solid'>
                 <p>Número de Vendas</p>
                 <h1 className='mt-1'>177</h1>
@@ -143,8 +143,8 @@ export default function Main() {
                 <h2 className="font-bold">Top 15 produtos vendidos</h2>
             </div>
 
-                <div className="w-full grid">
-                    <table className="hidden tableResponsive:border-collapse tableResponsive:block tableResponsive:w-full">
+                <div className="hidden w-full tableResponsive:block">
+                    <table>
                         <thead>
                             <tr className="text-center text-[#aaa] text-[.75em]">
                                 <th className="pt-5 pb-3">PRODUTO</th>

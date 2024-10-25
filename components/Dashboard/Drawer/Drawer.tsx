@@ -25,6 +25,7 @@ import KeyboardArrowUpSharpIcon from '@mui/icons-material/KeyboardArrowUpSharp';
 import LaptopWindowsIcon from '@mui/icons-material/LaptopWindows';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import { Logout, PersonAdd, Settings } from '@mui/icons-material';
+import { useRouter } from 'next/navigation';
 
 const drawerWidth = 240;
 
@@ -83,23 +84,27 @@ const AppBar = styled(MuiAppBar, {
   
   
 
-  const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-      width: open ? drawerWidth : `calc(${theme.spacing(7)} + 1px)`, // Adicionando a lógica baseada em "open"
-      flexShrink: 0,
-      whiteSpace: 'nowrap',
-      boxSizing: 'border-box',
-      ...(open && {
-        '& .MuiDrawer-paper': openedMixin(theme),
-      }),
-      ...(!open && {
-        '& .MuiDrawer-paper': closedMixin(theme),
-      }),
-    })
-  );
-  
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    width: open ? drawerWidth : `calc(${theme.spacing(7)} + 1px)`, // Adicionando a lógica baseada em "open"
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+      '& .MuiDrawer-paper': openedMixin(theme),
+    }),
+    ...(!open && {
+      '& .MuiDrawer-paper': closedMixin(theme),
+    }),
+  })
+);
 
-export default function MiniDrawer() {
+interface Props {
+  hasBack: boolean;
+}
+
+export default function MiniDrawer({ hasBack }: Props) {
+  const router = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [configuracoesOpen, setConfiguracoesOpen] = React.useState(false);
@@ -132,22 +137,29 @@ export default function MiniDrawer() {
       <CssBaseline />
       <AppBar position="fixed" open={open} >
         <Toolbar sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-          
-        <IconButton
-            color="primary"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            
-            sx={[
-              {
-                marginLeft: '2.2em',
-              },
-              open && { display: 'none' },
-            ]}
-          >
-            <MenuIcon />
-          </IconButton>
+            <IconButton
+              color="primary"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              
+              sx={[
+                {
+                  marginLeft: '2.2em',
+                },
+                open && { display: 'none' },
+              ]}
+            >
+              <MenuIcon />
+            </IconButton>
+            {hasBack && (
+              <IconButton
+              color="success"
+              >
+                <ChevronLeftIcon className="text-[1.1em]" />
+                <span className='text-lg text-black ml-1'>Vendas</span>
+              </IconButton>
+            )}
           <div className='absolute right-5'>
             <div className='flex items-center justify-end relative'>
               <EmailOutlinedIcon sx={{ color: '#79818a', margin: 0, cursor: 'pointer' }}/>
@@ -291,6 +303,7 @@ export default function MiniDrawer() {
                         justifyContent: 'center',
                       },
                 ]}
+                onClick={() => router.push("/dashboard")}
               >
                 <ListItemIcon
                   sx={[
@@ -347,6 +360,7 @@ export default function MiniDrawer() {
                         justifyContent: 'center',
                       },
                 ]}
+                onClick={() => router.push("/vendas")}
               >
                 <ListItemIcon
                   sx={[

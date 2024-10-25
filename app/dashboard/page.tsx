@@ -6,8 +6,9 @@ import { Box } from "@mui/material";
 export default function Dashboard() {
     return (
       <Box sx={{ display: 'flex', background: '#f0f0f0', width: '100vw' }}>
-        <MiniDrawer />
+        <MiniDrawer hasBack={false}/>
         <Main />
       </Box>
+      
     )
 }

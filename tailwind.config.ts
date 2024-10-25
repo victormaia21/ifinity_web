@@ -15,8 +15,12 @@ module.exports = {
         'custom-pattern': 'url:("/images/cityDemo.jpg")',
       },
       screens: {
-        'tableResponsive': '890px' 
-      }
+        'tableResponsive': '890px',
+        'cardsResponsive': '1px',
+      },
+      display: {
+        'initial': 'initial',
+      },
     },
   },
   plugins: [],

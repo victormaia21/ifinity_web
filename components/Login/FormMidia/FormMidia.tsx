@@ -15,7 +15,7 @@ export default function FormMidia() {
 
     const changeTextPassowrd = () => setPasswordVisible((pass) => !pass);
     return (
-        <section className='w-1/2'>
+        <section className='w-full sm:w-1/2'>
             <div className='w-[75%] ml-auto mr-auto pt-[5em] pb-[5em]'>
                 <div className='flex justify-center'>
                     <Image src='/images/ifiniti.png' alt='welcome ifinity' width={500} height={500}/>
@@ -66,20 +66,20 @@ export default function FormMidia() {
                     <div className='mt-10'>
                         <p className='text-[#555] text-[1.1em]'>Continue with social média</p>
 
-                        <div className='mt-5'>
-                            <Link href="*" className='pt-4 pb-4 pl-1 pr-1 rounded-[50%] shadow-customIcons ml-3 mr-3'>
+                        <div className='mt-5 flex justify-center'>
+                            <Link href="*" className='flex items-center justify-center h-[4em] w-[4em] rounded-[50%] shadow-customIcons ml-3 mr-3'>
                                 <FacebookIcon className='text-[2.5em] text-blue-700'/>
                             </Link>
 
-                            <Link href="*" className='pt-4 pb-4 pl-2 pr-2 rounded-[50%] shadow-customIcons ml-3 mr-3'>
+                            <Link href="*" className='flex items-center justify-center h-[4em] w-[4em] rounded-[50%] shadow-customIcons ml-3 mr-3'>
                                 <XIcon className='text-[2em]' />
                             </Link>
 
-                            <Link href="*" className='pt-4 pb-4 pl-2 pr-2 rounded-[50%] shadow-customIcons ml-3 mr-3'>
+                            <Link href="*" className='flex items-center justify-center h-[4em] w-[4em] rounded-[50%] shadow-customIcons ml-3 mr-3'>
                                 <GoogleIcon className='text-[2em] text-[#cc4b2f]' />
                             </Link>
 
-                            <Link href="*" className='pt-4 pb-4 pl-1 pr-1 rounded-[50%] shadow-customIcons ml-3 mr-3'>
+                            <Link href="*" className='flex items-center justify-center h-[4em] w-[4em] rounded-[50%] shadow-customIcons ml-3 mr-3'>
                                 <LinkedInIcon className='text-[2.5em] text-blue-700' />
                             </Link>
                         </div>

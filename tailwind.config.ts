@@ -16,7 +16,7 @@ module.exports = {
       },
       screens: {
         'tableResponsive': '890px',
-        'cardsResponsive': '1px',
+        'cardHeaderResponsive': '650px',
       },
       display: {
         'initial': 'initial',

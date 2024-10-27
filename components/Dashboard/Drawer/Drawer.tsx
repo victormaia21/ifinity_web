@@ -233,7 +233,7 @@ export default function MiniDrawer({ hasBack, nameBack }: Props) {
           </ListItemIcon>
           Add another account
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => router.push("/editar")}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
@@ -415,6 +415,7 @@ export default function MiniDrawer({ hasBack, nameBack }: Props) {
                         justifyContent: 'center',
                       },
                 ]}
+                onClick={() => router.push("/dashboard")}
               >
                 <ListItemIcon
                   sx={[
@@ -585,10 +586,10 @@ export default function MiniDrawer({ hasBack, nameBack }: Props) {
               </ListItemButton>
                 <Collapse in={relatorioOpen} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} onClick={() => router.push("/dashboard")}>
                             <ListItemText primary="Subopção 1" />
                         </ListItemButton>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} onClick={() => router.push("/dashboard")}>
                             <ListItemText primary="Subopção 2" />
                         </ListItemButton>
                     </List>

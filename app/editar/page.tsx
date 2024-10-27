@@ -1,12 +1,12 @@
 import MiniDrawer from "@/components/Dashboard/Drawer/Drawer";
-import MainVendas from "@/components/Vendas/MainVendas";
+import Editar from "@/components/Editar/Editar";
 import { Box } from "@mui/material";
 
-export default function Vendas() {
+export default function Page() {
     return (
         <Box sx={{ display: 'flex', background: '#f0f0f0', width: '100vw' }}>
-            <MiniDrawer hasBack={true} nameBack="Vendas"/>
-            <MainVendas />
+            <MiniDrawer hasBack={true} nameBack="Editar conta"/>
+            <Editar />
         </Box>
     )
 }

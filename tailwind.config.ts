@@ -9,7 +9,9 @@ module.exports = {
         'container_values': 'repeat(auto-fit, minmax(24%, 1fr))',
       },
       boxShadow: {
-        'customIcons': '0 0 1em 0.1em #999', 
+        'customIcons': '0 0 1em 0.1em #999',
+        'checkboxShadowBlack': '0 0 .4em .02em #999',
+        'checkboxShadowWhite': '0 0 .4em .02em white'
       },
       backgroundImage: {
         'custom-pattern': 'url:("/images/cityDemo.jpg")',

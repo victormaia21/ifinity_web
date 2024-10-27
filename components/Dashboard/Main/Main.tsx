@@ -35,7 +35,7 @@ export default function Main() {
             <p className='pl-2'><span>Acesso Rapido <b>DATA:</b> {getDate()}</span></p>
             <div className='grid gap-2 border-t-[1px] pt-2 pb-6 mt-3 sm:flex sm:justify-between'>
                 <div className='w-full flex justify-center'>
-                    <select className='w-[95%] bg-white border-gray-300 border-[1px] pl-2 pt-1 pb-1'>
+                    <select className='w-[95%] bg-white border-gray-300 bw-[97%] m-autoorder-[1px] pl-2 pt-1 pb-1'>
                         <option>Hoje</option>
                     </select>
                 </div>
@@ -63,7 +63,7 @@ export default function Main() {
         {/* Lucros */}
         <div>
         {/* Lucros colorido */}
-            <div className='flex flex-wrap gap-2 justify-center'>
+            <div className='flex flex-wrap gap-2 justify-center mt-5'>
 
                 <div className='bg-[#007aff] w-[45%] text-center pt-3 pb-3 text-white rounded-lg sm:w-[24%]'>
                     <p>Faturamento</p>
@@ -192,7 +192,7 @@ export default function Main() {
                         <div className="w-11/12 m-auto pt-4 pb-4">
                             <div className="border-b-[1px] border-[#aaa]">
                             <h2 className="font-bold text-center">PRODUTO</h2>
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center flex-col gap-3 sm:flex-none">
                                     <Image src={"/" + product.imagem} alt={product.nome} width={180} height={180}/>
                                     <p className="ml-1 pl-12 pr-12">{product.nome}</p>
                                 </div>

@@ -101,9 +101,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 interface Props {
   hasBack: boolean;
+  nameBack?: string;
 }
 
-export default function MiniDrawer({ hasBack }: Props) {
+export default function MiniDrawer({ hasBack, nameBack }: Props) {
   const router = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -152,14 +153,13 @@ export default function MiniDrawer({ hasBack }: Props) {
             >
               <MenuIcon />
             </IconButton>
-            {hasBack && (
               <IconButton
+              onClick={() => router.push("/dashboard")}
               color="success"
               >
-                <ChevronLeftIcon className="text-[1.1em]" />
-                <span className='text-lg text-black ml-1'>Vendas</span>
+                {hasBack && <ChevronLeftIcon className="text-[1.1em]" />}
+                <span className='text-lg text-black ml-1'>{nameBack}</span>
               </IconButton>
-            )}
           <div className='absolute right-5'>
             <div className='flex items-center justify-end relative'>
               <EmailOutlinedIcon sx={{ color: '#79818a', margin: 0, cursor: 'pointer' }}/>
@@ -512,10 +512,10 @@ export default function MiniDrawer({ hasBack }: Props) {
               </ListItemButton>
                 <Collapse in={configuracoesOpen} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} onClick={() => router.push("/integracoes")}>
                             <ListItemText primary="Subopção 1" />
                         </ListItemButton>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} onClick={() => router.push("/integracoes")}>
                             <ListItemText primary="Subopção 2" />
                         </ListItemButton>
                     </List>

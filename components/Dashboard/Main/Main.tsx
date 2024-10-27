@@ -144,7 +144,7 @@ export default function Main() {
             </div>
 
                 <div className="hidden w-full tableResponsive:block">
-                    <table>
+                    <table className="w-full">
                         <thead>
                             <tr className="text-center text-[#aaa] text-[.75em]">
                                 <th className="pt-5 pb-3">PRODUTO</th>
